@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row list">
     <div class="col-8 offset-2 d-grid gap-2 mt-3 d-md-flex justify-content-md-end">
-      <input type="text" [(ngModel)]="search" placeholder="Search" (ngModelChange)="searchBook()" class="form-control"/><button class="btn btn-success" (click)="openModal()" >Cadastrar</button>
+      <input type="text" [(ngModel)]="search" placeholder="Search" (ngModelChange)="searchBook()" class="form-control"/><button class="btn btn-success" [disabled]="authors.length == 0"  (click)="openModal()" >Cadastrar</button>
     </div>
     <div class="col-md-8 offset-md-2 mt-3">
       <div class="card">

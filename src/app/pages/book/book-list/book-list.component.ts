@@ -43,8 +43,16 @@ export class BookListComponent implements OnInit {
   }
 
   public openModal() {
-    this.bookModal.authors = this.authors;
-    this.bookModal.openModal();
+    if (this.authors.length > 0) {
+      this.bookModal.authors = this.authors;
+      this.bookModal.openModal();
+    } else {
+      this.iziToastService.warning({
+        title: 'Warning',
+        message: 'There are no registered authors',
+        position:  'topRight'
+      })
+    }
   }
 
   public updateList(book: Book) {
