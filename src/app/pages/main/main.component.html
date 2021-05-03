@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav-tabs-navigation fixed-top">
+                <div class="nav-tabs-wrapper d-flex justify-content-center">
+                    <ul id="tabs" class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" [ngClass]="{'active': tab == 'library'}" (click)="tab = 'library'">
+                                Library
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [ngClass]="{'active': tab == 'books'}" (click)="tab = 'books'">
+                                Books
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [ngClass]="{'active': tab == 'authors'}" (click)="tab = 'authors'">
+                                Authors
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+<app-vitrine *ngIf="tab == 'library'"></app-vitrine>
+<app-book-list *ngIf="tab == 'books'"></app-book-list>
+<app-author-list *ngIf="tab == 'authors'"></app-author-list>

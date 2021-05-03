@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row list">
+    <div class="col-8 offset-2 d-grid gap-2 mt-3 d-md-flex justify-content-md-end">
+      <input type="text" [(ngModel)]="search" placeholder="Search" (ngModelChange)="searchBook()" class="form-control"/><button class="btn btn-success" (click)="openModal()" >Cadastrar</button>
+    </div>
+    <div class="col-md-8 offset-md-2 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <th>Title</th>
+                <th>ISBN</th>
+                <th>Author</th>
+                <th>Actions</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let book of books | slice: (page-1) * pageSize : page * pageSize" >
+                  <td>{{ book.title }}</td>
+                  <td>{{ book.isbn }}</td>
+                  <td>{{ book.author.firstName }} {{ book.author.lastName }}</td>
+                  <td>
+                    <span class="icon-actions" title="Edit" (click)="edit(book)"><i class="fas fa-edit"></i></span>
+                    <span class="icon-actions" title="Delete" (click)="delete(book)" ><i class="fas fa-trash-alt text-danger"></i></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ngb-pagination
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [collectionSize]="books.length"
+            class="d-flex justify-content-center">
+              <ng-template ngbPaginationFirst>First</ng-template>
+              <ng-template ngbPaginationLast>Last</ng-template>
+              <ng-template ngbPaginationEllipsis>...</ng-template>
+              <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+            </ngb-pagination>
+          </div>
+        </div>
+        <app-book-modal (addBook)="updateList($event)"></app-book-modal>
+      </div>
+    </div>
+  </div>
+</div>
+

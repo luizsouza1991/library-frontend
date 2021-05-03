@@ -1,0 +1,43 @@
+<ng-template #modal let-modal>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-grid gap-2 mt-1 mr-3 d-md-flex justify-content-md-end">
+          <span (click)="closeModal()"><i class="fas fa-times float-right"></i></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 p-4">
+          <form #formBook="ngForm" (ngSubmit)="save()">
+              <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" id="title" class="form-control" name="title" required #t="ngModel" [(ngModel)]="title" minlength="4">
+                  <small *ngIf="t.invalid && (t.dirty || t.touched)" class="text-danger">
+                      <span *ngIf="t.hasError('required')">Title name is <i>required</i>.</span>
+                      <span *ngIf="t.hasError('minlength')">Title name must be at least 4 characters.</span>
+                  </small>
+              </div>
+              <div class="form-group">
+                <label for="isbn">ISBN</label>
+                <input type="text" id="isbn" class="form-control" name="isbn" required #i="ngModel" [(ngModel)]="isbn" minlength="8">
+                <small *ngIf="i.invalid && (i.dirty || i.touched)" class="text-danger">
+                  <span *ngIf="i.hasError('required')">ISBN name is <i>required</i>.</span>
+                  <span *ngIf="i.hasError('minlength')">ISBN name must be at least 8 characters.</span>
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="author">Author</label>
+                <select id="author" name="author" required #a="ngModel" [(ngModel)]="author" class="form-control">
+                  <option *ngFor="let author of authors" [value]="author.uuid">{{ author.firstName }} {{ author.lastName }}</option>
+                </select>
+                <small *ngIf="a.invalid && (a.dirty || a.touched)" class="text-danger">
+                  <span *ngIf="a.hasError('required')">Nome da marca é <i>obrigatório</i>.</span>
+                </small>
+              </div>
+              <div class="d-grid gap-2 mt-3 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-primary" [disabled]="formBook.invalid" ><span class="color-secondary">Salvar</span></button>
+              </div>
+          </form>
+      </div>
+  </div>
+  </div>
+</ng-template>

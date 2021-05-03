@@ -1,0 +1,34 @@
+<ng-template #modal let-modal>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-grid gap-2 mt-1 mr-3 d-md-flex justify-content-md-end">
+          <span (click)="closeModal()"><i class="fas fa-times float-right"></i></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 p-4">
+          <form #form="ngForm" (ngSubmit)="save()">
+              <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" class="form-control" name="firstName" required #fn="ngModel" [(ngModel)]="firstName" minlength="3">
+                  <small *ngIf="fn.invalid && (fn.dirty || fn.touched)" class="text-danger">
+                      <span *ngIf="fn.hasError('required')">First name is <i>required</i>.</span>
+                      <span *ngIf="fn.hasError('minlength')">First name must be at least 3 characters.</span>
+                  </small>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-control" name="lastName" required #ln="ngModel" [(ngModel)]="lastName" minlength="3">
+                <small *ngIf="ln.invalid && (ln.dirty || ln.touched)" class="text-danger">
+                  <span *ngIf="ln.hasError('required')">Last name is <i>required</i>.</span>
+                  <span *ngIf="ln.hasError('minlength')">Last name must be at least 3 characters.</span>
+                </small>
+              </div>
+              <div class="d-grid gap-2 mt-3 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid" ><span class="color-secondary">Salvar</span></button>
+              </div>
+          </form>
+      </div>
+  </div>
+  </div>
+</ng-template>
