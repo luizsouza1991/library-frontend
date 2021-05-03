@@ -55,9 +55,11 @@ export class BookModalComponent implements OnInit {
           position: 'topRight'
         });
 
-        this.book = new Book();
-        this.closeModal();
+        this.title = null;
+        this.isbn = null;
+        this.author = null;
         this.addBook.emit(data);
+        this.closeModal();
       })
     }
 
@@ -74,7 +76,9 @@ export class BookModalComponent implements OnInit {
 
       this.addBook.emit(data);
       this.edit = false;
-      this.book = new Book();
+      this.title = null;
+      this.isbn = null;
+      this.author = null;
       this.closeModal();
     })
   }

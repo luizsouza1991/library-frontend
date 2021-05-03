@@ -54,7 +54,8 @@ export class AuthorModalComponent implements OnInit {
           position: 'topRight'
         });
 
-        this.author = new Author();
+        this.firstName = null;
+        this.lastName = null;
         this.closeModal();
         this.addAuthor.emit(data);
       })
@@ -72,7 +73,8 @@ export class AuthorModalComponent implements OnInit {
       });
       this.addAuthor.emit(this.author);
       this.edit = false;
-      this.author = new Author();
+      this.firstName = null;
+      this.lastName = null;
       this.closeModal();
     })
   }

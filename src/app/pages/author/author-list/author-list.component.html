@@ -7,6 +7,13 @@
       <div class="card">
         <div class="card-body">
           <div class="table-responsive">
+            <div class="form-group col-md-2 col-2 mb-3">
+              <label>Page size</label>
+              <select class="form-control form-sm" [(ngModel)]="pageSize">
+                <option value=5>5</option>
+                <option value=10>10</option>
+              </select>
+            </div>
             <table class="table table-striped">
               <thead>
                 <th>First Name</th>
